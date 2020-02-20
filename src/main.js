@@ -4,6 +4,7 @@ import router from '@/router';
 import store from '@/store';
 
 import '@/plugins/base-components';
+import '@/plugins/socket-io';
 
 Vue.config.productionTip = false;
 

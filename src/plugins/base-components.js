@@ -1,5 +1,5 @@
-// import Vue from 'vue';
+import Vue from 'vue';
 
-// example
-// import AppButton from '@/app/core/components/app-button';
-// Vue.component('AppButton', AppButton);
+import AppConnectionStatus from '@/app/core/components/app-connection-status';
+
+Vue.component('AppConnectionStatus', AppConnectionStatus);

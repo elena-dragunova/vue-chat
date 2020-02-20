@@ -1,8 +1,30 @@
 <template>
   <div id="app">
-    <router-view/>
+    <app-connection-status :is-connected="isConnected"/>
   </div>
 </template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      isConnected: false,
+    };
+  },
+  sockets: {
+    connect() {
+      console.log('connected');
+      this.isConnected = true;
+    },
+    disconnect() {
+      console.log('disconnected');
+      this.isConnected = false;
+    },
+  },
+};
+</script>
+
 
 <style lang="scss">
 #app {
