@@ -1,15 +1,37 @@
 <template>
   <div id="app">
+    <the-navbar />
+    <div :class="$style.container">
+      <main-message-list :messages="messages"/>
+    </div>
     <app-connection-status :is-connected="isConnected"/>
   </div>
 </template>
 
 <script>
+import TheNavbar from '@/app/main/components/the-navbar';
+import MainMessageList from '@/app/main/components/main-message-list';
 
 export default {
+  components: {
+    TheNavbar,
+    MainMessageList,
+  },
   data() {
     return {
       isConnected: false,
+      messages: [
+        {
+          id: 1,
+          username: 'Paul',
+          message: 'Hey',
+        },
+        {
+          id: 2,
+          username: 'Evan',
+          message: 'How are you?',
+        },
+      ],
     };
   },
   sockets: {
@@ -25,13 +47,10 @@ export default {
 };
 </script>
 
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss" module>
+@import "styles/base";
+.container {
+  width: 300px;
+  margin: 0 auto;
 }
 </style>
