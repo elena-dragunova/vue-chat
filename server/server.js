@@ -8,14 +8,17 @@ http.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-io.on('connection', socket => {
+const messages = [];
+
+const emitMessages = () => io.emit('chatMessage', messages);
+
+io.on('connection', (socket) => {
   console.log('A user connected.');
+  emitMessages(messages);
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
+  socket.on('chatMessage', (message) => {
+    messages.push(message);
 
-  socket.on('chatMessage', message => {
-    console.log(message);
+    emitMessages(messages);
   });
 });

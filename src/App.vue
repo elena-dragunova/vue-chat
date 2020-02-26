@@ -39,12 +39,13 @@ export default {
   },
   sockets: {
     connect() {
-      console.log('connected');
       this.isConnected = true;
     },
     disconnect() {
-      console.log('disconnected');
       this.isConnected = false;
+    },
+    chatMessage(messages) {
+      this.messages = messages;
     },
   },
 };
